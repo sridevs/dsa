@@ -43,6 +43,9 @@
 # CMake
 cmake-build-*/
 
+#Talisman
+.talismanrc
+
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
 

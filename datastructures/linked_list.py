@@ -1,11 +1,15 @@
-from node import Node
+from .node import Node
 
 
 class LinkedList:
     def __init__(self, val):
-        self.head = Node(value=val)
+        self.head = self.create_node(val)
         self.tail = self.head
         self.length = 1
+
+    @staticmethod
+    def create_node(val):
+        return Node(value=val)
 
     def get_head_value(self):
         return self.head.value
@@ -14,13 +18,13 @@ class LinkedList:
         return self.tail.value
 
     def append(self, val) -> None:
-        new_node = Node(value=val)
+        new_node = self.create_node(val)
         self.tail.next = new_node
         self.tail = new_node
         self.increment_length()
 
     def prepend(self, val) -> None:
-        new_node = Node(value=val)
+        new_node = self.create_node(val)
         new_node.next = self.head
         self.head = new_node
         self.increment_length()
@@ -28,7 +32,7 @@ class LinkedList:
     def insert(self, index, val):
         if index == 0: return self.prepend(val)
         if index >= self.length: return self.append(val)
-        new_node = Node(value=val)
+        new_node = self.create_node(val)
         prev_node = self.traverse_to(index-1)
         new_node.next = prev_node.next
         prev_node.next = new_node
@@ -56,7 +60,11 @@ class LinkedList:
             index += 1
         return linked_list
 
-    def delete(self, index):
-        pointing_node = self.traverse_to(index-1)
-        pointing_node.next = pointing_node.next.next
+    def delete(self, index, previous_node=None):
+        if index >= self.length: index = self.length-1
+        if index == 0:
+            self.head = self.head.next
+        else:
+            prev_node = previous_node or self.traverse_to(index - 1)
+            prev_node.next = prev_node.next.next
         self.decrement_length()
