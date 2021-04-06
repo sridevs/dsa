@@ -34,3 +34,8 @@ class DoublyLinkedList(LinkedList):
                 next_node = previous_node.next.next
                 next_node.prev = previous_node
         super().delete(index, previous_node)
+
+    def reverse(self):
+        curr, self.head, self.tail = self.head, self.tail, self.head
+        while curr:
+            curr.next, curr.prev, curr = curr.prev, curr.next, curr.next

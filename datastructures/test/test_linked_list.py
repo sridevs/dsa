@@ -56,6 +56,21 @@ class TestOperations(TestLinkedList):
         self.linked_list.delete(1)
         self.assertListEqual(self.linked_list.get_list(), [3, 5])
 
+    def test_reverse_list(self):
+        self.linked_list.append(4)
+        self.linked_list.append(5)
+        self.linked_list.reverse()
+        self.assertListEqual(self.linked_list.get_list(), [5, 4, 3])
+
+    def test_reverse_list_with_one_element(self):
+        self.linked_list.reverse()
+        self.assertListEqual(self.linked_list.get_list(), [3])
+
+    def test_reverse_list_with_no_elements(self):
+        self.linked_list.delete(0)
+        self.linked_list.reverse()
+        self.assertFalse(self.linked_list.length)
+
 
 if __name__ == '__main__':
     unittest.main()

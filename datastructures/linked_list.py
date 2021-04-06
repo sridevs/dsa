@@ -68,3 +68,12 @@ class LinkedList:
             prev_node = previous_node or self.traverse_to(index - 1)
             prev_node.next = prev_node.next.next
         self.decrement_length()
+
+    def reverse(self):
+        if self.length == 0: return
+        first = self.head
+        second = first.next
+        self.head.next, self.head, self.tail = None, self.tail, self.head
+        self.tail = self.head
+        while second:
+            second.next, second, first = first, second.next, second
