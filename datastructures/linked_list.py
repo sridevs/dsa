@@ -33,7 +33,7 @@ class LinkedList:
         if index == 0: return self.prepend(val)
         if index >= self.length: return self.append(val)
         new_node = self.create_node(val)
-        prev_node = self.traverse_to(index-1)
+        prev_node = self.traverse_to(index - 1)
         new_node.next = prev_node.next
         prev_node.next = new_node
         self.increment_length()
@@ -61,7 +61,7 @@ class LinkedList:
         return linked_list
 
     def delete(self, index, previous_node=None):
-        if index >= self.length: index = self.length-1
+        if index >= self.length: index = self.length - 1
         if index == 0:
             self.head = self.head.next
         else:
@@ -71,9 +71,7 @@ class LinkedList:
 
     def reverse(self):
         if self.length == 0: return
-        first = self.head
-        second = first.next
+        curr, nxt = self.head, self.head.next
         self.head.next, self.head, self.tail = None, self.tail, self.head
-        self.tail = self.head
-        while second:
-            second.next, second, first = first, second.next, second
+        while nxt:
+            nxt.next, curr, nxt = curr, nxt, nxt.next

@@ -19,7 +19,7 @@ class DoublyLinkedList(LinkedList):
         pointing_head.prev = self.head
 
     def insert(self, index, val):
-        prev_node = self.traverse_to(index-1)
+        prev_node = self.traverse_to(index - 1)
         super().insert(index, val)
         inserted_node = prev_node.next
         inserted_node.prev = prev_node
@@ -29,8 +29,8 @@ class DoublyLinkedList(LinkedList):
         if index == 0:
             self.head.next.prev = None
         else:
-            previous_node = self.traverse_to(index-1)
-            if index != self.length-1:
+            previous_node = self.traverse_to(index - 1)
+            if index != self.length - 1:
                 next_node = previous_node.next.next
                 next_node.prev = previous_node
         super().delete(index, previous_node)

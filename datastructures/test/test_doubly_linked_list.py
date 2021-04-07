@@ -52,7 +52,7 @@ class TestOperations(TestDoublyLinkedList):
         self.doubly_linked_list.append(4)
         self.doubly_linked_list.append(5)
         self.doubly_linked_list.append(6)
-        # self.assert_list_is([3, 4, 5, 6])
+        self.assert_list_is([3, 4, 5, 6])
         self.doubly_linked_list.reverse()
         self.assert_list_is([6, 5, 4, 3])
         self.assertEqual(4, self.doubly_linked_list.tail.prev.value)

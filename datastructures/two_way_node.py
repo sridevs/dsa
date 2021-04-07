@@ -7,8 +7,9 @@ class TwoWayNode(Node):
         self.prev = self.prev = values.get('prev')
 
     def __str__(self) -> str:
+        # print(self.value)
         return {
             'value': self.value,
-            'next': self.next.__str__(),
-            'prev': self.prev
+            'next': self.next,
+            'prev': self.prev.__str__()
         }.__str__()

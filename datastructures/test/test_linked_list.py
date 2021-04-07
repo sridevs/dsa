@@ -59,8 +59,12 @@ class TestOperations(TestLinkedList):
     def test_reverse_list(self):
         self.linked_list.append(4)
         self.linked_list.append(5)
+        self.linked_list.append(6)
         self.linked_list.reverse()
-        self.assertListEqual(self.linked_list.get_list(), [5, 4, 3])
+        self.assertListEqual(self.linked_list.get_list(), [6, 5, 4, 3])
+        self.assertFalse(self.linked_list.tail.next)
+        self.assertEqual(self.linked_list.head.next.value, 5)
+        self.assertEqual(self.linked_list.traverse_to(1).next.value, 4)
 
     def test_reverse_list_with_one_element(self):
         self.linked_list.reverse()
