@@ -44,3 +44,7 @@ class TestOperation(TestQueue):
         self.assertEqual(self.queue.head.value, self.queue.tail.value, "person3")
         self.queue.dequeue()
         self.assertTrue(self.queue.head is self.queue.tail is None)
+
+
+if __name__ == '__main__':
+    unittest.main()

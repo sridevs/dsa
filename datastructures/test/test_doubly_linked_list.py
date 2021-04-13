@@ -57,3 +57,7 @@ class TestOperations(TestDoublyLinkedList):
         self.assert_list_is([6, 5, 4, 3])
         self.assertEqual(4, self.doubly_linked_list.tail.prev.value)
         self.assertEqual(self.doubly_linked_list.traverse_to(1).prev.value, 6)
+
+
+if __name__ == '__main__':
+    unittest.main()

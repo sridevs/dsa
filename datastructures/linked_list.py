@@ -1,33 +1,13 @@
-from .node import Node
+from .linear_collection import LinearCollection
 
 
-class LinkedList:
-    def __init__(self, val):
-        self.head = self.create_node(val)
-        self.tail = self.head
-        self.length = 1
-
-    @staticmethod
-    def create_node(val):
-        return Node(value=val)
+class LinkedList(LinearCollection):
 
     def get_head_value(self):
         return self.head.value
 
     def get_tail_value(self):
         return self.tail.value
-
-    def append(self, val) -> None:
-        new_node = self.create_node(val)
-        self.tail.next = new_node
-        self.tail = new_node
-        self.increment_length()
-
-    def prepend(self, val) -> None:
-        new_node = self.create_node(val)
-        new_node.next = self.head
-        self.head = new_node
-        self.increment_length()
 
     def insert(self, index, val):
         if index == 0: return self.prepend(val)
@@ -45,12 +25,6 @@ class LinkedList:
             curr_node = curr_node.next
             curr_index += 1
         return curr_node
-
-    def increment_length(self):
-        self.length += 1
-
-    def decrement_length(self):
-        self.length -= 1
 
     def to_list(self):
         linked_list, index, curr = [], 0, self.head
