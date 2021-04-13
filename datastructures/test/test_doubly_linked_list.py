@@ -20,7 +20,7 @@ class TestOperations(TestDoublyLinkedList):
         self.assertEqual(self.doubly_linked_list.tail.prev.value, 2)
 
     def assert_list_is(self, lst):
-        self.assertListEqual(self.doubly_linked_list.get_list(), lst)
+        self.assertListEqual(self.doubly_linked_list.to_list(), lst)
 
     def test_insert(self):
         self.doubly_linked_list.append(5)

@@ -52,7 +52,7 @@ class LinkedList:
     def decrement_length(self):
         self.length -= 1
 
-    def get_list(self):
+    def to_list(self):
         linked_list, index, curr = [], 0, self.head
         while index < self.length:
             linked_list.append(curr.value)
@@ -64,6 +64,8 @@ class LinkedList:
         if index >= self.length: index = self.length - 1
         if index == 0:
             self.head = self.head.next
+            if self.length == 1:
+                self.tail = None
         else:
             prev_node = previous_node or self.traverse_to(index - 1)
             prev_node.next = prev_node.next.next

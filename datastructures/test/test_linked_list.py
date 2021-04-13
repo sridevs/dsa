@@ -48,27 +48,32 @@ class TestOperations(TestLinkedList):
         self.assertEqual(self.linked_list.head.next.value, 4)
         self.assertEqual(self.linked_list.get_tail_value(), 5)
         self.assertEqual(self.linked_list.length, 3)
-        self.assertListEqual(self.linked_list.get_list(), [3, 4, 5])
+        self.assertListEqual(self.linked_list.to_list(), [3, 4, 5])
 
     def test_delete(self):
         self.linked_list.append(4)
         self.linked_list.append(5)
         self.linked_list.delete(1)
-        self.assertListEqual(self.linked_list.get_list(), [3, 5])
+        self.assertListEqual(self.linked_list.to_list(), [3, 5])
+
+    def test_delete_linked_list_with_1_node(self):
+        self.linked_list.delete(0)
+        self.assertEqual(self.linked_list.head, None)
+        self.assertEqual(self.linked_list.tail, None)
 
     def test_reverse_list(self):
         self.linked_list.append(4)
         self.linked_list.append(5)
         self.linked_list.append(6)
         self.linked_list.reverse()
-        self.assertListEqual(self.linked_list.get_list(), [6, 5, 4, 3])
+        self.assertListEqual(self.linked_list.to_list(), [6, 5, 4, 3])
         self.assertFalse(self.linked_list.tail.next)
         self.assertEqual(self.linked_list.head.next.value, 5)
         self.assertEqual(self.linked_list.traverse_to(1).next.value, 4)
 
     def test_reverse_list_with_one_element(self):
         self.linked_list.reverse()
-        self.assertListEqual(self.linked_list.get_list(), [3])
+        self.assertListEqual(self.linked_list.to_list(), [3])
 
     def test_reverse_list_with_no_elements(self):
         self.linked_list.delete(0)
